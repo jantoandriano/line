@@ -10,7 +10,6 @@ function Tab({ categoryList, b }) {
     <Foryou key={v.id} data={v.sections[0].articles} title={v.title} />
   ));
 
-
   return (
     <div>
       <Head>
@@ -18,7 +17,7 @@ function Tab({ categoryList, b }) {
         <link rel="icon" href="/icon.jpeg" />
       </Head>
       <Header categoryList={categoryList} />
-      <CarouselComp  data={b} />
+      <CarouselComp data={b} />
       <TopNews data={b} />
       {ForYouList}
     </div>

@@ -9,7 +9,7 @@ const Card = ({ data }) => {
         borderRadius="3"
         height="200px"
         width="100%"
-        objectFit="contain"
+        objectFit="fill"
       />
       <Box paddingLeft="3">
         <Text textTransform="capitalize">{data.title}</Text>
