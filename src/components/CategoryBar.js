@@ -8,7 +8,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-import styles from "./CategoryBar.module.css";
 
 const CategoryBar = () => {
   const [open, setOpen] = useState(false);
