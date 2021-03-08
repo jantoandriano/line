@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Heading } from "@chakra-ui/react";
+import { Carousel } from "react-responsive-carousel";
 
 const CarouselComp = ({ data }) => {
-  console.log(data, "Carousel");
   return (
     <Box>
-    <Box bg='lightblue' width="100%" height="300px" />
+      <Box bg="lightblue" width="100%" height="300px" />
       <Box
         borderRadius="4"
         boxShadow="md"

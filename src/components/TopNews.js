@@ -16,6 +16,7 @@ export default TopNews;
 const TopNewsItem = ({data}) => {
   return (
     <Box p="3">
+      <a href={data.url.url}>
       <Flex>
         <Image
           src={data.publisherImageCdnHash}
@@ -29,6 +30,7 @@ const TopNewsItem = ({data}) => {
           <Text color="lightgrey">{data.publisher}</Text>
         </Box>
       </Flex>
+      </a>
     </Box>
   );
 };
