@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Tab from "./tab/[tab]";
 
-const Home = ({ categoryList }) => {
+const Home = ({ categoryList, b }) => {
   return (
     <div>
       <Head>
@@ -9,7 +9,7 @@ const Home = ({ categoryList }) => {
         <link rel="icon" href="/icon.jpeg" />
       </Head>
 
-      <Tab categoryList={categoryList} />
+      <Tab categoryList={categoryList} b={b} />
     </div>
   );
 };
@@ -21,12 +21,13 @@ export const getServerSideProps = async () => {
   const categoryList = data.result.categoryList;
   const categories = data.result.categories;
   const top = categories.filter((v) => v.name === "TOP");
-
+  const a = top[0].templates;
+  const b = a.filter((v) => v.sections[0].articles.length > 1);
+  const c = b.filter((v) => v.title);
   return {
     props: {
       categoryList,
-      categories,
-      top,
+      b: c,
     },
   };
 };
