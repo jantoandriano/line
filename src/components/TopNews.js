@@ -13,23 +13,22 @@ const TopNews = ({ data }) => {
 
 export default TopNews;
 
-const TopNewsItem = ({data}) => {
+const TopNewsItem = ({ data }) => {
   return (
     <Box p="3">
       <a href={data.url.url}>
-      <Flex>
-        <Image
-          src={data.publisherImageCdnHash}
-          boxSize="100px"
-          borderRadius="3"
-        />
-        <Box paddingLeft="3">
-          <Text textTransform="capitalize">
-            {data.title}
-          </Text>
-          <Text color="lightgrey">{data.publisher}</Text>
-        </Box>
-      </Flex>
+        <Flex>
+          <Image
+            src={`https://obs.line-scdn.net/${data.thumbnail.hash}`}
+            boxSize="100px"
+            borderRadius="3"
+          />
+
+          <Box paddingLeft="3">
+            <Text textTransform="capitalize">{data.title}</Text>
+            <Text color="lightgrey">{data.publisher}</Text>
+          </Box>
+        </Flex>
       </a>
     </Box>
   );

@@ -5,9 +5,11 @@ const Card = ({ data }) => {
   return (
     <Box cursor="pointer">
       <Image
-        src={data.publisherImageCdnHash}
-        boxSize="100px"
+        src={`https://obs.line-scdn.net/${data.thumbnail.hash}`}
         borderRadius="3"
+        height="200px"
+        width="100%"
+        objectFit="contain"
       />
       <Box paddingLeft="3">
         <Text textTransform="capitalize">{data.title}</Text>
