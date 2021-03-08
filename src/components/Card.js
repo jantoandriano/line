@@ -1,16 +1,17 @@
-import { Box, Image, Text } from "@chakra-ui/react";
 import React from "react";
+import { Box, Image, Text } from "@chakra-ui/react";
 
-const Card = () => {
+const Card = ({ data }) => {
   return (
-    <Box>
-      <Image src="https://bit.ly/sage-adebayo" alt="Segun Adebayo" />
+    <Box cursor="pointer">
+      <Image
+        src={data.publisherImageCdnHash}
+        boxSize="100px"
+        borderRadius="3"
+      />
       <Box paddingLeft="3">
-        <Text textTransform="capitalize">
-          akkafkmalkmeflaflalf laneniwenfinawfenaknw n ifhofoah foa ih
-          iafohoawheiofaiw hoa
-        </Text>
-        <Text color="lightgrey">Kumparan</Text>
+        <Text textTransform="capitalize">{data.title}</Text>
+        <Text color="lightgrey">{data.publisher}</Text>
       </Box>
     </Box>
   );

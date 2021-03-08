@@ -4,14 +4,15 @@ import CategoryBar from "./CategoryBar";
 import TitleBar from "./TitleBar";
 import CategoryBarSecond from "./CategoryBarSecond";
 
-const Header = () => {
+const Header = ({categoryList}) => {
   return (
     <Box overflow="hidden">
       <TitleBar />
-      <CategoryBar />
-      <CategoryBarSecond />
+      <CategoryBar categoryList={categoryList} />
+      <CategoryBarSecond categoryList={categoryList} />
     </Box>
   );
 };
+
 
 export default Header;

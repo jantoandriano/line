@@ -5,37 +5,22 @@ import {
   Box,
   Heading,
   ButtonGroup,
-  Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 
-const CategoryBar = () => {
+const CategoryBar = ({ categoryList }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpenBar = () => {
     setOpen(!open);
   };
 
-  const tabItems = [
-    "top",
-    "rekomendasi",
-    "showbiz",
-    "news",
-    "life",
-    "regional",
-    "hot issues",
-    "intermezo",
-    "hobbies",
-    "sports",
-    "games",
-    "covid 19",
-  ];
-
   return (
     <Box>
       <Box display="flex" justifyContent="space-between" bgColor="white" p="2">
         {!open ? (
-          <CategoryTab tabItems={tabItems} />
+          <CategoryTab categoryList={categoryList} />
         ) : (
           <Box>
             <Heading size="sm">Category</Heading>
@@ -46,40 +31,46 @@ const CategoryBar = () => {
         </ButtonGroup>
       </Box>
 
-      {open && <AllCategoryBar tabItems={tabItems} />}
+      {open && <AllCategoryBar categoryList={categoryList} />}
     </Box>
   );
 };
 
 export default CategoryBar;
 
-const AllCategoryBar = ({ tabItems }) => {
+const AllCategoryBar = ({ categoryList }) => {
   return (
-    <div className={styles.allCategory}>
+    <Box mt="2">
       <SimpleGrid minChildWidth="100px" spacing={2}>
-        {tabItems.map((tab, idx) => (
-          <Button key={idx} bg="white" textTransform="capitalize">
-            {tab}
-          </Button>
+        {categoryList.map((tab, idx) => (
+          <Link href={`/tab/${tab.name}`}>
+            <Button key={tab.id} bg="white">
+              {tab.name}
+            </Button>
+          </Link>
         ))}
       </SimpleGrid>
-    </div>
+    </Box>
   );
 };
 
-const CategoryTab = ({ tabItems }) => {
+const CategoryTab = ({ categoryList }) => {
   return (
     <>
-      {tabItems.slice(0, 8).map((tab, idx) => (
+      {categoryList.slice(0, 8).map((tab, idx) => (
         <Box
-          key={idx}
+          key={tab.id}
           _hover={{
             background: "white",
             color: "teal.500",
             cursor: "pointer",
           }}
         >
-          <Text>{tab}</Text>
+          <Link href={`/tab/${tab.name}`}>
+            <Button key={tab.id} bg="white">
+              {tab.name}
+            </Button>
+          </Link>
         </Box>
       ))}
     </>

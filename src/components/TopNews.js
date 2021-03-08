@@ -1,34 +1,32 @@
 import React from "react";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
-const TopNews = () => {
+const TopNews = ({ data }) => {
   return (
     <Box marginTop="6">
-      <TopNewsItem />
-      <TopNewsItem />
-      <TopNewsItem />
+      {data[0].sections[0].articles.slice(0, 3).map((v) => (
+        <TopNewsItem key={v.id} data={v} />
+      ))}
     </Box>
   );
 };
 
 export default TopNews;
 
-const TopNewsItem = () => {
+const TopNewsItem = ({data}) => {
   return (
     <Box p="3">
       <Flex>
         <Image
-          src="https://bit.ly/sage-adebayo"
-          alt="Segun Adebayo"
+          src={data.publisherImageCdnHash}
           boxSize="100px"
           borderRadius="3"
         />
         <Box paddingLeft="3">
           <Text textTransform="capitalize">
-            akkafkmalkmeflaflalf laneniwenfinawfenaknw n ifhofoah foa ih
-            iafohoawheiofaiw hoa
+            {data.title}
           </Text>
-          <Text color="lightgrey">Kumparan</Text>
+          <Text color="lightgrey">{data.publisher}</Text>
         </Box>
       </Flex>
     </Box>

@@ -1,27 +1,34 @@
 import Head from "next/head";
-import style from "../styles/Home.module.css"
-import Header from '../components/Header.js'
-import Carousel from "../components/Carousel.js"
-import TopNews from "../components/TopNews.js"
-import Foryou from "../components/Foryou"
+import Tab from "./tab/[tab]";
 
-export default function Home() {
+const Home = ({ categoryList }) => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>LINE TODAY</title>
+        <link rel="icon" href="/icon.jpeg" />
       </Head>
 
-      <div className={style.main}>
-        <div className={style.wrapper}>
-          <Header />
-          <Carousel />
-          <TopNews/>
-          <Foryou/>
-          <Foryou/>
-        </div>     
-      </div>
+      <Tab categoryList={categoryList} />
     </div>
   );
-}
+};
+
+export const getServerSideProps = async () => {
+  const res = await fetch(`https://today.line.me/id/portaljson`);
+  const data = await res.json();
+
+  const categoryList = data.result.categoryList;
+  const categories = data.result.categories;
+  const top = categories.filter((v) => v.name === "TOP");
+
+  return {
+    props: {
+      categoryList,
+      categories,
+      top,
+    },
+  };
+};
+
+export default Home;

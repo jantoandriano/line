@@ -3,17 +3,17 @@ import { SimpleGrid, Box, Heading } from "@chakra-ui/react";
 import Card from "./Card";
 
 
-const Foryou = () => {
+const Foryou = ({data, title}) => {
+
   return (
     <Box>
-      <Box m='4' borderRadius="4" color="white" bgGradient="linear-gradient(103deg,#c74a82,#f68a94)" >
-      <Heading textTransform="uppercase" size="md" p="10">artikel pilihan untukmu</Heading>
+      <Box m='4' borderRadius="4" color="white" bgGradient="linear-gradient(103deg,#1e3c72,#2a5298)" >
+      <Heading textTransform="uppercase" size="md" p="10">{title}</Heading>
       </Box>
       <SimpleGrid columns={2} spacing={10} p="4">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data.map(v => (
+          <Card key={v.id} data={v} />
+        ))}
       </SimpleGrid>
     </Box>
   );
